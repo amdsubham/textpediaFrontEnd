@@ -9,6 +9,8 @@ import Query from "layouts/Query";
 
 import { connect } from "react-redux";
 import { login, logout } from "./actions/auth";
+import About from 'views/pages/About';
+import Privacy from 'views/pages/Privacy';
 
 class App extends Component {
     render() {
@@ -21,6 +23,8 @@ class App extends Component {
                     <Route path="/auth" render={(props) => <AuthLayout {...props} {...this.props} />} />
                     {/* <Route path="/menu" render={(props) => <Menu {...props} {...this.props} />} /> */}
                     <Route path="/query" render={(props) => <Query {...props} {...this.props} />} />
+                    <Route path="/about" render={(props) => <About />} />
+                    <Route path="/privacy" render={(props) => <Privacy />} />
                     {/* <Route path="/" render={(props) => <IndexView {...props} {...this.props} />} /> */}
                     <Route path={["/", "/menu"]} render={(props) => <Menu {...props} {...this.props} />} />
                     <Redirect from="*" to="/" />
@@ -46,9 +50,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 function mapStateToProps(state) {
-    console.log("ALL STATE", state)
     const { auth, message } = state
-    // const { user } = state.auth;
     return {
         ...auth,
         ...message

@@ -8,10 +8,8 @@ import {
     Col,
 } from "reactstrap";
 // core components
-import AlternativeHeader from "components/Headers/AlternativeHeader.js";
 import _map from 'lodash/map'
 import CardItem from "components/Card";
-import EventBus from "common/EventBus";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 const segmentDetails = [
     {
@@ -46,6 +44,7 @@ const segmentDetails = [
 
 function Menu({ user, history, dispatch, logout }) {
     const [segments, setSegment] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [currentUser, setUser] = useState(undefined);
 
     const logOut = () => {
@@ -53,14 +52,15 @@ function Menu({ user, history, dispatch, logout }) {
         setUser(undefined)
         history.push("/auth");
     }
+
     React.useEffect(() => {
-        if (user) {
+        if (user !== null) {
             setUser(user)
             setSegment(segmentDetails)
         }
-        EventBus.on("logout", () => {
-            logOut();
-        });
+        else {
+            logOut()
+        }
 
     }, []);
 

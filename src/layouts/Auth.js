@@ -8,9 +8,9 @@ import AuthNavbar from "components/Navbars/AuthNavbar.js";
 //import AuthFooter from "components/Footers/AuthFooter.js";
 
 import routes from "routes.js";
+import AuthFooter from "components/Footers/AuthFooter";
 
 function Auth(parentProps) {
-  console.log("Mastii", parentProps)
   const location = useLocation();
   const mainContentRef = React.useRef(null);
   React.useEffect(() => {
@@ -66,7 +66,7 @@ function Auth(parentProps) {
           <Redirect from="*" to="/auth/login" />
         </Switch>
       </div>
-      {/* <AuthFooter /> */}
+      <AuthFooter />
     </>
   );
 }

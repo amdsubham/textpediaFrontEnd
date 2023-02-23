@@ -1,19 +1,4 @@
-/*!
 
-=========================================================
-* Argon Dashboard PRO React - v1.2.3
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-pro-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 /*eslint-disable*/
 import React from "react";
 
@@ -31,26 +16,19 @@ function AuthFooter() {
                 © {new Date().getFullYear()}{" "}
                 <a
                   className="font-weight-bold ml-1"
-                  href="https://www.creative-tim.com?ref=adpr-auth-footer"
+                  href="https://www.textpedia.app"
                   target="_blank"
                 >
-                  Creative Tim
+                  Textpedia
                 </a>
               </div>
             </Col>
             <Col xl="6">
               <Nav className="nav-footer justify-content-center justify-content-xl-end">
+
                 <NavItem>
                   <NavLink
-                    href="https://www.creative-tim.com?ref=adpr-auth-footer"
-                    target="_blank"
-                  >
-                    Creative Tim
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    href="https://www.creative-tim.com/presentation?ref=adpr-auth-footer"
+                    href="https://www.textpedia.app/about"
                     target="_blank"
                   >
                     About Us
@@ -58,18 +36,10 @@ function AuthFooter() {
                 </NavItem>
                 <NavItem>
                   <NavLink
-                    href="http://blog.creative-tim.com?ref=adpr-auth-footer"
+                    href="https://www.textpedia.app/privacy"
                     target="_blank"
                   >
-                    Blog
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    href="https://www.creative-tim.com/license?ref=adpr-auth-footer"
-                    target="_blank"
-                  >
-                    License
+                    Privacy Policy
                   </NavLink>
                 </NavItem>
               </Nav>

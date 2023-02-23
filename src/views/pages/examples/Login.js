@@ -47,12 +47,11 @@ class Login extends Component {
     this.setState({
       loading: true,
     });
-    const { history, login } = this.props;
+    const { login } = this.props;
 
 
     login(this.state.email, this.state.password)
       .then(() => {
-        console.log("we have logged in succesfully")
         this.setState({
           loading: false,
         });
@@ -73,9 +72,7 @@ class Login extends Component {
 
   render() {
     const { focusedEmail, focusedPassword, loading } = this.state;
-    const { isLoggedIn, user, message = '' } = this.props;
-    console.log("message", message)
-    console.log("Heyyyaaaa", isLoggedIn, user)
+    const { isLoggedIn, message = '' } = this.props;
     if (isLoggedIn) {
       return <Redirect to="/menu" />;
     }
@@ -83,7 +80,7 @@ class Login extends Component {
       <>
         <AuthHeader
           title="Welcome!"
-          lead="Use these awesome forms to login or create new account in your project for free."
+          lead="Get your awesome email and message templates to match your situation, We will make sure you are providing the most appropriate response."
         />
         <Container className="mt--8 pb-5">
           <Row className="justify-content-center">

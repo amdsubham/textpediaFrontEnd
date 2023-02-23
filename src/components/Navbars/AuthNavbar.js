@@ -26,8 +26,15 @@ function AdminNavbar() {
           <NavbarBrand to="/" tag={Link}>
             <img
               alt="..."
-              src={require("assets/img/brand/argon-react-white.png")}
+              src={require("assets/img/brand/textpediaicon.png")}
+              style={{ marginBottom: '0.7rem', paddingRight: '0.3rem' }}
             />
+            <span style={{
+              fontWeight: 'bold',
+              fontSize: 'xx-large',
+
+            }}>Textpedia</span>
+
           </NavbarBrand>
           <button
             aria-controls="navbar-collapse"
@@ -102,7 +109,7 @@ function AdminNavbar() {
               <NavItem>
                 <NavLink
                   className="nav-link-icon"
-                  href="https://www.facebook.com/creativetim?ref=creative-tim"
+                  href="https://www.facebook.com/textpedia"
                   id="tooltip601201423"
                   target="_blank"
                 >
@@ -118,7 +125,7 @@ function AdminNavbar() {
               <NavItem>
                 <NavLink
                   className="nav-link-icon"
-                  href="https://www.instagram.com/creativetimofficial?ref=creative-tim"
+                  href="https://www.instagram.com/textpedia.app"
                   id="tooltip871243015"
                   target="_blank"
                 >
@@ -135,7 +142,7 @@ function AdminNavbar() {
                 <Button
                   className="btn-neutral btn-icon"
                   color="default"
-                  href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=adpr-auth-navbar"
+                  href="https://www.instamojo.com/@textpedia"
                   target="_blank"
                 >
                   <span className="btn-inner--icon">

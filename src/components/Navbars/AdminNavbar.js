@@ -32,16 +32,12 @@ import {
   InputGroupAddon,
   InputGroupText,
   InputGroup,
-  ListGroupItem,
-  ListGroup,
   Media,
   Navbar,
   NavItem,
   NavLink,
   Nav,
   Container,
-  Row,
-  Col,
 } from "reactstrap";
 
 function AdminNavbar({ theme, sidenavOpen, toggleSidenav, logOut }) {
@@ -76,7 +72,7 @@ function AdminNavbar({ theme, sidenavOpen, toggleSidenav, logOut }) {
     <>
       <Navbar
         className={classnames(
-          "navbar-top navbar-expand border-bottom",
+          "bg-gradient-info navbar-top navbar-expand border-bottom",
           { "navbar-dark bg-info": theme === "dark" },
           { "navbar-light bg-secondary": theme === "light" }
         )}
@@ -135,7 +131,12 @@ function AdminNavbar({ theme, sidenavOpen, toggleSidenav, logOut }) {
               <UncontrolledDropdown nav>
                 <DropdownToggle className="nav-link" color="" tag="a">
 
-                  <span className="nav-link-inner--text">Textpedia</span>
+
+                  <span style={{
+                    fontWeight: 'bold',
+                    fontSize: 'large',
+
+                  }}>TEXTPEDIA</span>
                 </DropdownToggle>
 
               </UncontrolledDropdown>
