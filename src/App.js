@@ -20,7 +20,7 @@ class App extends Component {
                 <Switch>
                     <Route path="/admin" render={(props) => <AdminLayout {...props} {...this.props} />} />
                     <Route path="/rtl" render={(props) => <RTLLayout {...props} {...this.props} />} />
-                    <Route path="/auth" render={(props) => <AuthLayout {...props} {...this.props} />} />
+                    <Route path={["/auth/login", "/auth"]} render={(props) => <AuthLayout {...props} {...this.props} />} />
                     {/* <Route path="/menu" render={(props) => <Menu {...props} {...this.props} />} /> */}
                     <Route path="/query" render={(props) => <Query {...props} {...this.props} />} />
                     <Route path="/about" render={(props) => <About />} />

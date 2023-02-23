@@ -28,7 +28,7 @@ function AuthFooter() {
 
                 <NavItem>
                   <NavLink
-                    href="https://www.textpedia.app/about"
+                    href="/about"
                     target="_blank"
                   >
                     About Us
@@ -36,7 +36,7 @@ function AuthFooter() {
                 </NavItem>
                 <NavItem>
                   <NavLink
-                    href="https://www.textpedia.app/privacy"
+                    href="/privacy"
                     target="_blank"
                   >
                     Privacy Policy
