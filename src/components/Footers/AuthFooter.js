@@ -1,7 +1,7 @@
 
 /*eslint-disable*/
 import React from "react";
-
+import { Link } from "react-router-dom";
 // reactstrap components
 import { NavItem, NavLink, Nav, Container, Row, Col } from "reactstrap";
 
@@ -25,22 +25,17 @@ function AuthFooter() {
             </Col>
             <Col xl="6">
               <Nav className="nav-footer justify-content-center justify-content-xl-end">
-
                 <NavItem>
-                  <NavLink
-                    href="/about"
-                    target="_blank"
-                  >
-                    About Us
-                  </NavLink>
+                  <Link to="/about" target="_blank">
+                    About
+                  </Link>
                 </NavItem>
-                <NavItem>
-                  <NavLink
-                    href="/privacy"
-                    target="_blank"
-                  >
+                <br />
+                <NavItem >
+                  <Link style={{ margin: '1rem' }} to="/privacy" target="_blank">
                     Privacy Policy
-                  </NavLink>
+                  </Link>
+
                 </NavItem>
               </Nav>
             </Col>
