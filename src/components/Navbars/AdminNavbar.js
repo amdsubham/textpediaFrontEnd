@@ -123,7 +123,7 @@ function AdminNavbar({ theme, sidenavOpen, toggleSidenav, logOut, history }) {
                     }}
                     onClick={() => history.push("/menu")}
 
-                  >TEXTPEDIASSS</span>
+                  >TEXTPEDIA</span>
                 </DropdownToggle>
 
               </UncontrolledDropdown>

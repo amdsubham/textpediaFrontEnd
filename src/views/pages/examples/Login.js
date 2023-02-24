@@ -79,7 +79,7 @@ class Login extends Component {
     return (
       <>
         <AuthHeader
-          title="Welcome!"
+          title="Welcomessss!"
           lead="Get your awesome email and message templates to match your situation, We will make sure you are providing the most appropriate response."
         />
         <Container className="mt--8 pb-5">
