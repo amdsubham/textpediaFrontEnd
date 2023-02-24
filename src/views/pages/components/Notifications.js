@@ -70,6 +70,7 @@ function Notifications() {
     };
     notificationAlertRef.current.notificationAlert(options);
   };
+
   const basicAlert = () => {
     setalert(
       <ReactBSAlert

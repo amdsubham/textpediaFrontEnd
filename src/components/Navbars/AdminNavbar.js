@@ -1,19 +1,3 @@
-/*!
-
-=========================================================
-* Argon Dashboard PRO React - v1.2.3
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-pro-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 // nodejs library that concatenates classes
 import classnames from "classnames";
@@ -40,7 +24,7 @@ import {
   Container,
 } from "reactstrap";
 
-function AdminNavbar({ theme, sidenavOpen, toggleSidenav, logOut }) {
+function AdminNavbar({ theme, sidenavOpen, toggleSidenav, logOut, history }) {
   // function that on mobile devices makes the search open
   const openSearch = () => {
     document.body.classList.add("g-navbar-search-showing");
@@ -129,14 +113,17 @@ function AdminNavbar({ theme, sidenavOpen, toggleSidenav, logOut }) {
                 </NavLink>
               </NavItem>
               <UncontrolledDropdown nav>
-                <DropdownToggle className="nav-link" color="" tag="a">
+                <DropdownToggle
+                  className="nav-link" color="" tag="a">
+                  <span
+                    style={{
+                      fontWeight: 'bold',
+                      fontSize: 'large',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => history.push("/menu")}
 
-
-                  <span style={{
-                    fontWeight: 'bold',
-                    fontSize: 'large',
-
-                  }}>TEXTPEDIA</span>
+                  >TEXTPEDIA</span>
                 </DropdownToggle>
 
               </UncontrolledDropdown>

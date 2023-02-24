@@ -3,32 +3,43 @@ import {
     Card,
     CardBody,
     CardTitle,
-    DropdownMenu,
-    DropdownItem,
-    DropdownToggle,
-    UncontrolledDropdown,
     Row,
-    Col,
 } from "reactstrap";
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton'
+import DefaultModal from './DefaultModal';
+import ColorModal from './ColorModal';
 
 class CardItem extends Component {
-
+    state = {
+        defaultModal: false,
+        notificationModal: false,
+    };
     renderLoading = () => (
         <>
             <Skeleton height={100} />
             <Skeleton height={100} />
         </>
     )
+    toggleModal = state => {
+        this.setState({
+            [state]: !this.state[state]
+        });
+    };
 
+    getSegmentType = () => {
+        const { isSegmentCouple } = this.props
+        return isSegmentCouple ? "notificationModal" : "defaultModal"
+    }
     render() {
-        const { cardType = 'default', title = '', value = '', isLoading = false, isPremium = false } = this.props
+        const { title = '', isLoading = false, } = this.props
+        const { defaultModal, notificationModal } = this.state
         if (isLoading) {
             return this.renderLoading()
         }
         return (
             <>
-                <Card className="card-stats" >
+                <Card className="card-stats"
+                    onClick={() => this.toggleModal(this.getSegmentType())}>
                     <CardBody>
                         <Row>
                             <div className="col">
@@ -46,11 +57,11 @@ class CardItem extends Component {
                                 </div>
                             </Col> */}
 
-                            {isPremium && (<Col className="col-auto">
+                            {/* {isPremium && (<Col className="col-auto">
                                 <div className=" bg-gradient-red text-white  shadow">
                                     <i style={{ padding: '0.2rem' }}>Premium</i>
                                 </div>
-                            </Col>)}
+                            </Col>)} */}
                         </Row>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <p className="mt-3 mb-0 text-sm">
@@ -60,12 +71,22 @@ class CardItem extends Component {
                             </p>
                             <p className="mt-3 mb-0 text-sm">
                                 <span className="text-danger mr-2">
-                                    <i className="fa fa-plus" /> Favourite
+                                    <i className="fa fa-heart" />
                                 </span>{" "}
                             </p>
                         </div>
                     </CardBody>
                 </Card>
+                {defaultModal && (<DefaultModal
+                    toggleModal={this.toggleModal}
+                    defaultModal={defaultModal}
+                    query={title}
+                />)}
+                {notificationModal && (<ColorModal
+                    toggleModal={this.toggleModal}
+                    notificationModal={notificationModal}
+                    query={title}
+                />)}
             </>
         )
     }

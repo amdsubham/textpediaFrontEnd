@@ -11,6 +11,7 @@ import {
     Col,
 } from "reactstrap";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import _noop from 'lodash/noop'
 
 class CardItem extends Component {
 
@@ -22,13 +23,15 @@ class CardItem extends Component {
     )
 
     render() {
-        const { cardType = 'default', title = '', value = '', isLoading = false } = this.props
+        const { cardType = 'default', title = '', value = '', isLoading = false, handleClickSegment = _noop } = this.props
         if (isLoading) {
             return this.renderLoading()
         }
         return (
             <>
-                <Card className={`bg-gradient-${cardType} border-0 mr-0`}>
+                <Card className={`bg-gradient-${cardType} border-0 mr-0`}
+                    onClick={handleClickSegment}
+                >
                     <CardBody>
                         <Row>
                             <div className="col">

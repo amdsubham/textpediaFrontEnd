@@ -1,19 +1,3 @@
-/*!
-
-=========================================================
-* Argon Dashboard PRO React - v1.2.3
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-pro-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React, { useState } from "react";
 
 // reactstrap components
@@ -22,113 +6,56 @@ import {
     Row,
     Col,
 } from "reactstrap";
-// core components
-import AlternativeHeader from "components/Headers/AlternativeHeader.js";
 import _map from 'lodash/map'
+import _get from 'lodash/get'
+import axios from 'axios';
 import QueryCard from "components/QueryCard";
+import AdminNavbar from "components/Navbars/AdminNavbar";
 
-const queryDetails = [
-    {
-        title: 'What are your plans for the weekend?',
-        cardType: 'info',
-        value: '8/10',
-        isPremium: false,
-    },
-    {
-        title: 'What do you do for a living?',
-        cardType: 'default',
-        value: '9/10',
-        isPremium: true,
+function Query({ match, logOut }) {
 
-    },
-    {
-        title: 'What kind of music/movies/TV shows do you like?',
-        cardType: 'danger',
-        value: '7/10',
-        isPremium: false,
-
-    },
-    {
-        title: 'Where did you grow up?',
-        cardType: 'primary',
-        value: '4/10',
-        isPremium: true,
-
-    },
-
-
-    {
-        title: 'What are your plans for the weekend?',
-        cardType: 'info',
-        value: '8/10',
-        isPremium: false,
-    },
-    {
-        title: 'Where did you grow up?',
-        cardType: 'primary',
-        value: '4/10',
-        isPremium: false,
-
-    },
-    {
-        title: 'What kind of music/movies/TV shows do you like?',
-        cardType: 'danger',
-        value: '7/10',
-        isPremium: true,
-
-    },
-    {
-        title: 'What do you do for a living?',
-        cardType: 'default',
-        value: '9/10',
-        isPremium: false,
-
-    },
-    {
-        title: 'What are your plans for the weekend?',
-        cardType: 'info',
-        value: '8/10',
-        isPremium: false,
-    },
-    {
-        title: 'Where did you grow up?',
-        cardType: 'primary',
-        value: '4/10',
-        isPremium: false,
-
-    },
-    {
-        title: 'What kind of music/movies/TV shows do you like?',
-        cardType: 'danger',
-        value: '7/10',
-        isPremium: false,
-
-    },
-    {
-        title: 'What do you do for a living?',
-        cardType: 'default',
-        value: '9/10',
-        isPremium: false,
-
-    },
-
-]
-
-function Query() {
     const [queries, setQueries] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const fetchQueryDetails = () => {
+        const segment = _get(match, 'params.segment')
+        setLoading(true)
+        const apiUrl = `http://localhost:8085/api/fetch/query/?menuType=${segment}`;
+        const requestData = {
+            method: 'get',
+            url: apiUrl,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        };
+        axios(requestData)
+            .then(response => {
+                const { data } = _get(response, 'data', [])
+                const updatedData = _map(data, (item, index) => ({ ...item, key: index }))
+                setQueries(updatedData)
+                setLoading(false)
+            })
+            .catch(error => {
+                console.error(error);
+                setLoading(false)
+            });
+    }
     React.useEffect(() => {
-        setQueries(queryDetails)
+        fetchQueryDetails()
     }, []);
+
+
     return (
         <>
-            <AlternativeHeader />
-            <Container className="mt--6" fluid>
+            <AdminNavbar logOut={logOut} />
+            <Container style={{ paddingTop: '7rem' }} className="mt--6" fluid>
                 <Row>
                     {
                         _map(queries, item => (
                             <Col md="6" xl="3">
                                 <QueryCard
                                     {...item}
+                                    isLoading={loading}
+                                    isSegmentCouple={_get(match, 'params.segment') === 'couple'}
                                 />
                             </Col>
                         ))

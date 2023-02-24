@@ -11,39 +11,12 @@ import {
 import _map from 'lodash/map'
 import CardItem from "components/Card";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
-const segmentDetails = [
-    {
-        title: 'corporate',
-        cardType: 'info',
-        value: '8/10',
-        isPremium: false,
+import axios from 'axios';
+import _get from 'lodash/get'
 
-    },
-    {
-        title: 'Couples',
-        cardType: 'primary',
-        value: '4/10',
-        isPremium: true,
-    },
-    {
-        title: 'networking',
-        cardType: 'danger',
-        value: '7/10',
-        isPremium: false,
-
-    },
-    {
-        title: 'business',
-        cardType: 'default',
-        value: '9/10',
-        isPremium: true,
-
-    },
-
-]
-
-function Menu({ user, history, dispatch, logout }) {
+function Menu({ user, history, logout }) {
     const [segments, setSegment] = useState([]);
+    const [loading, setLoading] = useState(false);
     // eslint-disable-next-line no-unused-vars
     const [currentUser, setUser] = useState(undefined);
 
@@ -53,10 +26,37 @@ function Menu({ user, history, dispatch, logout }) {
         history.push("/auth");
     }
 
+    const handleClick = (segment) => {
+        history.push(`/query/${segment}`)
+    }
+
+    const fetchMenuDetails = () => {
+        setLoading(true)
+        const apiUrl = 'http://localhost:8085/api/fetch/menu';
+        const requestData = {
+            method: 'get',
+            url: apiUrl,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        };
+        axios(requestData)
+            .then(response => {
+                const { data } = _get(response, 'data', [])
+                const updatedData = _map(data, (item, index) => ({ ...item, key: index }))
+                setSegment(updatedData)
+                setLoading(false)
+            })
+            .catch(error => {
+                console.error(error);
+                setLoading(false)
+            });
+    }
+
     React.useEffect(() => {
         if (user !== null) {
             setUser(user)
-            setSegment(segmentDetails)
+            fetchMenuDetails()
         }
         else {
             logOut()
@@ -68,7 +68,7 @@ function Menu({ user, history, dispatch, logout }) {
     return (
         <>
             {/* <AlternativeHeader /> */}
-            <AdminNavbar logOut={logOut} />
+            <AdminNavbar logOut={logOut} history={history} />
             <Container style={{ paddingTop: '7rem' }} className="mt--6" fluid>
                 <Row>
                     {
@@ -76,6 +76,9 @@ function Menu({ user, history, dispatch, logout }) {
                             <Col md="6" xl="3">
                                 <CardItem
                                     {...item}
+                                    isLoading={loading}
+                                    handleClickSegment={() => handleClick(_get(item, 'title'))}
+
                                 />
                             </Col>
                         ))

@@ -11,18 +11,21 @@ import { connect } from "react-redux";
 import { login, logout } from "./actions/auth";
 import About from 'views/pages/About';
 import Privacy from 'views/pages/Privacy';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
     render() {
         return (
 
             <BrowserRouter>
+                <ToastContainer />
                 <Switch>
                     <Route path="/admin" render={(props) => <AdminLayout {...props} {...this.props} />} />
                     <Route path="/rtl" render={(props) => <RTLLayout {...props} {...this.props} />} />
                     <Route path={["/auth/login", "/auth"]} render={(props) => <AuthLayout {...props} {...this.props} />} />
                     {/* <Route path="/menu" render={(props) => <Menu {...props} {...this.props} />} /> */}
-                    <Route path="/query" render={(props) => <Query {...props} {...this.props} />} />
+                    <Route path="/query/:segment" render={(props) => <Query {...props} {...this.props} />} />
                     <Route path="/about" render={(props) => <About />} />
                     <Route path="/privacy" render={(props) => <Privacy />} />
                     {/* <Route path="/" render={(props) => <IndexView {...props} {...this.props} />} /> */}
