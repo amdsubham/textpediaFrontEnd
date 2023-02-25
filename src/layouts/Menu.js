@@ -32,7 +32,7 @@ function Menu({ user, history, logout }) {
 
     const fetchMenuDetails = () => {
         setLoading(true)
-        const apiUrl = 'http://31.220.21.195:8085/api/fetch/menu';
+        const apiUrl = 'https://fruitnasta.com/v1/api/fetch/menu';
         const requestData = {
             method: 'get',
             url: apiUrl,

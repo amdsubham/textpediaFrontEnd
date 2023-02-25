@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://31.220.21.195:8085/api/auth/";
+const API_URL = "https://fruitnasta.com/v1/api/auth/";
 
 class AuthService {
   login(username, password) {

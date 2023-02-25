@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "http://31.220.21.195:8085/api/test/";
+const API_URL = "https://fruitnasta.com/v1/api/test/";
 
 class UserService {
   getPublicContent() {
