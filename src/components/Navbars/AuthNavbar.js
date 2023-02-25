@@ -56,8 +56,12 @@ function AdminNavbar() {
             <div className="navbar-collapse-header">
               <Row>
                 <Col className="collapse-brand" xs="6">
-                  <Link to="/admin/dashboard">
-                    <img alt="..." src={require("assets/img/brand/blue.png")} />
+                  <Link to="/">
+                    <span style={{
+                      fontWeight: 'bold',
+                      fontSize: 'xx-large',
+                      color: '#11cdef'
+                    }}>TEXTPEDIA</span>
                   </Link>
                 </Col>
                 <Col className="collapse-close" xs="6">
