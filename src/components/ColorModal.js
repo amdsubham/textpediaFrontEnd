@@ -37,7 +37,7 @@ export default class NotificationModal extends Component {
         const { switchChecked } = this.state
         const format = switchChecked ? 'email' : 'message'
         this.setState({ loading: true })
-        const apiUrl = `http://31.220.21.195:8085/api/fetch/solution?format=${format}?prompt=${query}`;
+        const apiUrl = `http://localhost:8085/api/fetch/solution?format=${format}?prompt=${query}`;
         const requestData = {
             method: 'get',
             url: apiUrl,

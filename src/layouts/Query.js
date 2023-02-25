@@ -19,7 +19,7 @@ function Query({ match, logOut }) {
     const fetchQueryDetails = () => {
         const segment = _get(match, 'params.segment')
         setLoading(true)
-        const apiUrl = `http://31.220.21.195:8085/api/fetch/query/?menuType=${segment}`;
+        const apiUrl = `http://localhost:8085/api/fetch/query/?menuType=${segment}`;
         const requestData = {
             method: 'get',
             url: apiUrl,
