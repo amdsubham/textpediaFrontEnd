@@ -39,7 +39,7 @@ export default class DefaultModal extends Component {
         const { switchChecked } = this.state
         const format = switchChecked ? 'email' : 'message'
         this.setState({ loading: true })
-        const apiUrl = `http://localhost:8085/api/fetch/solution?format=${format}?prompt=${query}`;
+        const apiUrl = `https://fruitnasta.com/v1/api/fetch/solution?format=${format}?prompt=${query}`;
         const requestData = {
             method: 'get',
             url: apiUrl,

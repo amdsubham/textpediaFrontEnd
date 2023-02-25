@@ -19,7 +19,7 @@ function Query({ match, logOut, history }) {
     const fetchQueryDetails = () => {
         const segment = _get(match, 'params.segment')
         setLoading(true)
-        const apiUrl = `http://localhost:8085/api/fetch/query/?menuType=${segment}`;
+        const apiUrl = `https://fruitnasta.com/v1/api/fetch/query/?menuType=${segment}`;
         const requestData = {
             method: 'get',
             url: apiUrl,
