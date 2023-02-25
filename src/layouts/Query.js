@@ -12,14 +12,14 @@ import axios from 'axios';
 import QueryCard from "components/QueryCard";
 import AdminNavbar from "components/Navbars/AdminNavbar";
 
-function Query({ match, logOut }) {
+function Query({ match, logOut, history }) {
 
     const [queries, setQueries] = useState([]);
     const [loading, setLoading] = useState(false);
     const fetchQueryDetails = () => {
         const segment = _get(match, 'params.segment')
         setLoading(true)
-        const apiUrl = `https://fruitnasta.com/v1/api/fetch/query/?menuType=${segment}`;
+        const apiUrl = `http://localhost:8085/api/fetch/query/?menuType=${segment}`;
         const requestData = {
             method: 'get',
             url: apiUrl,
@@ -46,7 +46,7 @@ function Query({ match, logOut }) {
 
     return (
         <>
-            <AdminNavbar logOut={logOut} />
+            <AdminNavbar logOut={logOut} history={history} />
             <Container style={{ paddingTop: '7rem' }} className="mt--6" fluid>
                 <Row>
                     {

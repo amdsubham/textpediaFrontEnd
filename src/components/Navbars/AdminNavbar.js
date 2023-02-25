@@ -5,6 +5,7 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 // reactstrap components
 import {
+  Button,
   Collapse,
   DropdownMenu,
   DropdownItem,
@@ -63,6 +64,17 @@ function AdminNavbar({ theme, sidenavOpen, toggleSidenav, logOut, history }) {
       >
         <Container fluid>
           <Collapse navbar isOpen={true}>
+            <Button
+              onClick={history.goBack}
+              className="btn-white"
+              outline
+              style={{
+                color: 'white',
+                border: 0
+              }}
+            >
+              <i className="fab fa fa-arrow-left" />
+            </Button>
             <Form
               className={classnames(
                 "navbar-search form-inline mr-sm-3",
